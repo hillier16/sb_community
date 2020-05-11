@@ -1,0 +1,20 @@
+{% extends 'baseline.html' %}
+{% block body %}
+    <a style="float: right" href="{% url 'blog:write_post' %}" type="button" class="btn btn-primary">글 쓰기</a>
+    <table class="table table-hover">
+        <thead>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일자</th>
+            <th>댓글수</th>
+        </thead>
+        {% for post in post_list %}
+            <tr>
+                <td><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></td>
+                <td>{{ post.author }}</td>
+                <td>{{ post.created_date }}</td>
+                <td>{{ post.comments.count }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

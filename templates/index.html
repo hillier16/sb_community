@@ -1,0 +1,11 @@
+{% extends 'baseline.html' %}
+{% block body %}
+    <h1>Welcome</h1>
+    <p>커뮤니티 사이트 입니다. 환영합니다~ 많이 놀러오세요</p>
+    <hr>
+    <div class="text-center">
+        <h3>Test</h3>
+        <p>글을 작성하고 여러 의견을 나누어 보아요!</p>
+        <a href="{% url 'blog:list' %}" type="button" class="btn btn-primary">글 보러가기</a>
+    </div>
+{% endblock %}

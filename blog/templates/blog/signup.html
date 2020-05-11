@@ -1,0 +1,22 @@
+{% extends 'baseline.html' %}
+{% block body %}
+    <h3>회원가입하기</h3>
+    <hr>
+    <div class="col-sm-offset-1 col-sm-5">
+        <form class="form-horizontal" id="signup" method="post">
+        {% csrf_token %}
+          {% for field in form %}
+          <div class="form-group">
+            <p>{{ field.label }} {{field}}</p>
+          </div>
+        {% endfor %}
+          <div class="form-group">
+              <button type="submit" class="btn btn-default">가입하기</button>
+          </div>
+        {% if form.errors %}
+            <br>
+            <p>{{ form.errors }}</p>
+        {% endif %}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'baseline.html' %}
+{% block style %}
+   body{
+    background: url(http://mymaplist.com/img/parallax/back.png);
+	background-color: #444;
+    background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);
+    }
+
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div style="padding-top: 100px" class="row vertical-offset-100">
+    	<div class="col-md-4 col-md-offset-3">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">로그인하기</h3>
+			 	</div>
+			  	<div class="panel-body">
+                    {# login form #}
+			    	<form accept-charset="UTF-8" id="loginform" method="post">
+                        {% csrf_token %}
+                    <fieldset>
+			    	  	<div class="form-group">
+			    		    <input id="id_nickname" class="form-control" placeholder="Nickname" name="username" type="text">
+			    		</div>
+			    		<div class="form-group">
+			    			<input id="id_password" class="form-control" placeholder="Password" name="password" type="password">
+			    		</div>
+			    		<div class="checkbox">
+			    	    	<label>
+			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
+			    	    	</label>
+			    	    </div>
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+			    	</fieldset>
+			      	</form>
+			    </div>
+			</div>
+             {% if form.errors %}
+                 <br>
+                 <p>ID나 비밀번호가 일치하지 않습니다.</p>
+             {% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

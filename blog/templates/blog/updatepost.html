@@ -1,0 +1,36 @@
+{% extends 'baseline.html' %}
+{% block body %}
+    <a href="{% url 'blog:list' %}" class="btn btn-default" type="button">글 리스트 보기</a>
+    <form class="form-horizontal" id="updatepost" method="post">
+    {% csrf_token %}
+      <div class="form-group">
+        <label for="inputtitle" class="col-sm-2 control-label">제목</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="inputtitle" name="title" value="{{ post.title }}">
+        </div>
+      </div>
+        <div class="form-group">
+        <label for="inputtitle" class="col-sm-2 control-label">작성자</label>
+        <div class="col-sm-9">
+          <p>{{ post.author }}</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputcontent" class="col-sm-2 control-label">내용</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" rows="10" id="inputcontent" name="content">{{ post.content }}</textarea>
+        </div>
+      </div>
+        <div class="form-group">
+        <label for="inputcreated_date" class="col-sm-2 control-label">작성날짜</label>
+        <div class="col-sm-9">
+          <p>{{ post.created_date }}</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">수정완료</button>
+        </div>
+      </div>
+    </form>
+{% endblock %}

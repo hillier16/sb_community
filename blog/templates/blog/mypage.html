@@ -1,0 +1,24 @@
+{% extends 'baseline.html' %}
+
+{% block body %}
+    <h3>프로필</h3>
+    <hr>
+    <div style="float: left">
+        <img style="margin: 20px" height="200px" width="200px" src="{{ user.avatar.url }}">
+        <form method="post" enctype="multipart/form-data" action="{% url 'blog:change_avatar' %}">
+            {% csrf_token %}
+            <div style="text-align: center">
+                <input style="margin-left: 10%;" type="file" name="avatar">
+                <br>
+                <button type="submit" class="btn btn-primary" >프로필 변경하기</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <br>
+        <p><strong>닉네임</strong> {{ user.nickname }}</p>
+        <p><strong>이름</strong> {{ user.username }}</p>
+        <p><strong>이메일</strong> {{ user.email }}</p>
+    </div>
+    <a type="button" href="{% url 'blog:signout' %}" class="btn btn-primary">회원탈퇴하기</a>
+{% endblock %}
